@@ -10,7 +10,7 @@ namespace DEINT_Actividad7_Ejercicios_Clases
     {
         public Dado[] listaDados { get; set; } = {new Dado(), new Dado(), new Dado()};
 
-        void Tirar() {
+        public void Tirar() {
 
             if (listaDados.Sum(d => d.Valor) == (listaDados.First().Valor * 3))
             {

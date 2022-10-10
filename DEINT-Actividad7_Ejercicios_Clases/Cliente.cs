@@ -27,7 +27,7 @@ namespace DEINT_Actividad7_Ejercicios_Clases
         public void Aumentar(Double cant) {
             
             CantAhorrada += Math.Round(cant, 2);
-            Console.WriteLine($"Ingresado {cant}€ correctamente");
+            Console.WriteLine($"Ingresado {cant} correctamente");
 
         }
 
@@ -35,18 +35,17 @@ namespace DEINT_Actividad7_Ejercicios_Clases
 
             if (CantAhorrada - cant < 0)
             {
-                CantAhorrada = 0;
+                Console.WriteLine($"No se puede extraer tanto dinero: Vuelve a tener {CantAhorrada}");
             }
             else {
                 CantAhorrada = Math.Round(cant, 2);
+                Console.WriteLine($"Extraido {cant} correctamente");
             }
-
-            Console.WriteLine($"Extraido {cant}€ correctamente");
 
         }
 
         public void ConsultarSaldo() {
-            Console.WriteLine($"Cantidad ahorrada: {CantAhorrada}€");
+            Console.WriteLine($"Cantidad ahorrada: {CantAhorrada}");
         }
     }
 }

@@ -14,30 +14,52 @@ namespace DEINT_Actividad7_Ejercicios_Clases
             String? dniTemp, opcion = null;
             Cliente? cliTemp = null;
             Double cant;
+            Boolean salir = false;
+            do {
+                Console.WriteLine("Introduzca el DNI del cliente con el que desea operar: ");
+                dniTemp = Console.ReadLine();
 
-            Console.WriteLine("Introduzca el DNI del cliente con el que desea operar: ");
-            dniTemp = Console.ReadLine();
+                cliTemp = obtenerClientePorDNI(dniTemp);
 
-            cliTemp = obtenerClientePorDNI(dniTemp);
+                if (cliTemp == null)
+                {
+                    Console.WriteLine($"ERROR: No existe cliente con DNI {dniTemp}");
+                }
+                else {
+                    Console.WriteLine($"Introduzca el tipo de operación a realizar con {cliTemp.Dni}: Ingresar [I], Extraer [E] o Consultar saldo [C]");
+                    opcion = Console.ReadLine();
 
-            Console.WriteLine($"Introduzca el tipo de operación a realizar con {cliTemp.Dni}: Ingresar [I] o Extraer [E]");
-            opcion = Console.ReadLine();
+                    if (opcion != null && opcion.ToLower().StartsWith("i"))
+                    {
+                        Console.WriteLine("Ingrese cantidad a ingresar: ");
+                        cant = Math.Round(Double.Parse(Console.ReadLine()), 2);
+                        cliTemp.Aumentar(cant);
+                    }
+                    else if (opcion != null && opcion.ToLower().StartsWith("e"))
+                    {
+                        Console.WriteLine("Ingrese cantidad a extraer: ");
+                        cant = Math.Round(Double.Parse(Console.ReadLine()), 2);
+                        cliTemp.Extraer(cant);
+                    }
+                    else if (opcion != null && opcion.ToLower().StartsWith("c"))
+                    {
+                        cliTemp.ConsultarSaldo();
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR: Elija una opción");
+                    }
 
-            if (opcion != null && opcion.ToLower().StartsWith("i"))
-            {
-                Console.WriteLine("Ingrese cantidad a ingresar: ");
-                cant = Math.Round(Double.Parse(Console.ReadLine()), 2);
-                cliTemp.Aumentar(cant);
-            }
-            else if (opcion != null && opcion.ToLower().StartsWith("e"))
-            {
-                Console.WriteLine("Ingrese cantidad a extraer: ");
-                cant = Math.Round(Double.Parse(Console.ReadLine()), 2);
-                cliTemp.Aumentar(cant);
-            }
-            else {
-                Console.WriteLine("ERROR: Elija una opción");
-            }
+                    Console.WriteLine("Desea realizar otra operación: Si [S] o No [N]: ");
+                    opcion = Console.ReadLine();
+
+                    if (opcion == null || opcion.ToLower().StartsWith("n"))
+                    {
+                        salir = true;
+                    }
+                }
+
+            } while (!salir);
 
         }
 

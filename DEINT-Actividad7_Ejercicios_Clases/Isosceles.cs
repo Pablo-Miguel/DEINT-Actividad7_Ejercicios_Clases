@@ -28,7 +28,7 @@ namespace DEINT_Actividad7_Ejercicios_Clases
             Console.WriteLine($"Perímetro -> {Perimetro}");
         }
 
-        public void Hacerrea() {
+        public void HacerArea() {
             Area = (LadoDesigual * AlturaTriangulo) / 2;
             Console.WriteLine($"Área -> {Area}");
         }
