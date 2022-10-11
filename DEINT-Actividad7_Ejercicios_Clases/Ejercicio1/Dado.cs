@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DEINT_Actividad7_Ejercicios_Clases
+namespace DEINT_Actividad7_Ejercicios_Clases.Ejercicio1
 {
     internal class Dado
     {
         Random r = new Random();
-        public Int16 Valor { get; set; } = 0;
+        public short Valor { get; set; } = 0;
 
         public Dado()
         {
-            this.Tirar();
+            Tirar();
         }
 
         public void Tirar()
         {
-            Valor = (Int16) r.Next(1, 7);
+            Valor = (short)r.Next(1, 7);
             Console.WriteLine($"Valor dado: {Valor}");
         }
     }
